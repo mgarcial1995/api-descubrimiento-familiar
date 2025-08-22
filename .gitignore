@@ -1,5 +1,39 @@
+# dependencias
+/node_modules
 
-node_modules
-dist
-dist-ssr
+# compilados de TS
+/dist
+/dist-ssr
+
+# builds de Next/Vite/etc (por si acaso)
+/build
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# sistema operativo
+.DS_Store
+Thumbs.db
+
+# entornos
 *.local
+.env
+.env.*.local
+
+# IDE/editores
+.vscode
+.idea
+*.swp
+*.swo
+
+# coverage de tests
+/coverage
+
+# lockfiles opcionales (si no quieres subirlos, pero recomendable dejarlos)
+/package-lock.json
+/yarn.lock
+/pnpm-lock.yaml
