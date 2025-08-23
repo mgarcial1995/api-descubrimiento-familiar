@@ -9,6 +9,7 @@ export interface IParticipante {
   correo?: string;
   es_miembro: boolean;
   cuenta_fs?: string;
+  crear_cuenta_fs?: boolean;
   asistio?: boolean;
   rol?: string;
 }
