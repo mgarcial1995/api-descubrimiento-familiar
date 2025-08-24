@@ -15,3 +15,31 @@ export const crearParticipante = async (body: IParticipante) => {
   }
   return data?.[0];
 };
+
+export const obtenerParticipante = async (id: string) => {
+  const { data, error } = await supabase
+    .from("participante")
+    .select(`*`)
+    .eq("id", id)
+    .single();
+  return data;
+};
+
+export const obtenerParticipantes = async () => {
+  const { data, error } = await supabase
+    .from("participante")
+    .select(`*`)
+    .order("id", { ascending: true });
+  return data;
+};
+
+export const asistioParticipante = async (id: string) => {
+  const { data, error } = await supabase
+    .from("participante")
+    .update({ asistio: true })
+    .eq("id", id)
+    .select();
+
+  if (error) throw error;
+  return data[0];
+};
