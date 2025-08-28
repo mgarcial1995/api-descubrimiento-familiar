@@ -1,5 +1,10 @@
 import type { Request, Response } from "express";
-import { asistioParticipante, crearParticipante, obtenerParticipante, obtenerParticipantes } from "../services/participante.service";
+import {
+  asistioParticipante,
+  crearParticipante,
+  obtenerParticipante,
+  obtenerParticipantes,
+} from "../services/participante.service";
 import type { IParticipante } from "../interfaces/participante.interface";
 import { errorResponse, successResponse } from "../utils/response";
 
@@ -9,7 +14,9 @@ export const registroParticipante = async (req: Request, res: Response) => {
     const user = await crearParticipante(participante);
     return res
       .status(201)
-      .json(successResponse(participante, "Participante creado con éxito", 201));
+      .json(
+        successResponse(participante, "Participante creado con éxito", 201)
+      );
   } catch (error: any) {
     return res
       .status(400)
@@ -27,7 +34,12 @@ export const datosParticipante = async (req: Request, res: Response) => {
   } catch (error: any) {
     return res
       .status(400)
-      .json(errorResponse(error.message || "Error obtener datos de participante", 400));
+      .json(
+        errorResponse(
+          error.message || "Error obtener datos de participante",
+          400
+        )
+      );
   }
 };
 
@@ -40,7 +52,9 @@ export const traerParticipantes = async (req: Request, res: Response) => {
   } catch (error: any) {
     return res
       .status(400)
-      .json(errorResponse(error.message || "Error al obtener participantes", 400));
+      .json(
+        errorResponse(error.message || "Error al obtener participantes", 400)
+      );
   }
 };
 
@@ -54,6 +68,12 @@ export const asistenciaParticipantes = async (req: Request, res: Response) => {
   } catch (error: any) {
     return res
       .status(400)
-      .json(errorResponse(error.message || "Error al actualizar participante", 400));
+      .json(
+        errorResponse(error.message || "Error al actualizar participante", 400)
+      );
   }
+};
+
+export const healtCheck = (req: Request, res: Response) => {
+  return res.status(201).json({ status: "ok", time: new Date().toISOString() });
 };
